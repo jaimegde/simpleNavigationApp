@@ -1,6 +1,5 @@
 package com.example.simplenavigation
 
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SecondScreen(name: String,navigationToThirdScreen:(String)-> Unit){
+fun ThirdScreen(name: String, navigationToFirstScreen:() -> Unit){
 
     Column(
         modifier = Modifier
@@ -26,18 +25,18 @@ fun SecondScreen(name: String,navigationToThirdScreen:(String)-> Unit){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
-        Text("This is the Second Screen", fontSize = 24.sp)
-        Text("Welcome $name", fontSize = 24.sp)
+        Text("This is the Third Screen", fontSize = 24.sp)
+        Text("Bye, ${name}", fontSize = 24.sp)
         Button(onClick = {
-                navigationToThirdScreen(name)
+            navigationToFirstScreen()
         }) {
-            Text("Go to Third Screen")
+            Text("Go to First Screen")
         }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun SecondScreenPreview(){
-    SecondScreen("Jaime",{})
+fun ThirdScreenPreview(){
+    ThirdScreen("Jaime",{})
 }
