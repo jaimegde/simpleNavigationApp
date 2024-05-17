@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SecondScreen(){
+fun SecondScreen(navigationToFirstScreen:()-> Unit){
     val name = remember {
         mutableStateOf("")
     }
@@ -32,7 +32,7 @@ fun SecondScreen(){
         Text("This is the Second Screen", fontSize = 24.sp)
         Text("Welcome", fontSize = 24.sp)
         Button(onClick = {
-
+                navigationToFirstScreen()
         }) {
             Text("Go to First Screen")
         }
@@ -42,5 +42,5 @@ fun SecondScreen(){
 @Preview(showBackground = true)
 @Composable
 fun SecondScreenPreview(){
-    SecondScreen()
+    SecondScreen({})
 }
